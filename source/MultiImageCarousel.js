@@ -36,45 +36,18 @@ enyo.kind(
         this.imageCount = this.images.length;
     },
 
-    getBufferRange: function()
-    {
-        var range = [];
-        if (this.layout.containerBounds)
-        {
-            var prefetchRange = 1;
-            var bounds = this.layout.containerBounds;
-            var m, img, c, i, x, xEnd;
-            // get the lower range
-            i = this.index - 1;
-            x = 0;
-            xEnd = bounds.width * prefetchRange;
-            while (i >= 0 && x <= xEnd)
-            {
-                c = this.$["container" + i];
-                x += c.width + c.marginWidth;
-                range.unshift(i);
-                i--;
-            }
-            // get the upper range
-            i = this.index;
-            x = 0;
-            xEnd = bounds.width * (prefetchRange + 1);
-            while (i < this.images.length && x <= xEnd)
-            {
-                c = this.$["container" + i];
-                x += c.width + c.marginWidth;
-                range.push(i);
-                i++;
-            }
-        }
-        return range;
-    },
-
     previous: function()
     {
         if (this.index > 0)
         {
-            this.setIndex(this.index - 1);
+            if (this.index > this.imageCount - this.thumbnailsCount)
+            {
+                this.setIndex(this.imageCount - this.thumbnailsCount - 1);
+            }
+            else
+            {
+                this.setIndex(this.index - 1);
+            }
         }
     },
 

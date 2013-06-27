@@ -28,7 +28,7 @@ enyo.kind(
 				},
 				{
 					kind: 'onyx.InputDecorator',
-					classes: 'imagecarousel-sample-input',
+					classes: 'hidden',
 					components: [
 						{
 							name: 'carouselIndexInput',
@@ -80,7 +80,10 @@ enyo.kind(
 	{
 		if (this.$.carouselIndexInput)
 		{
-			this.$.carouselIndexInput.setValue(inEvent.toIndex);
+			if (inEvent.toIndex <= this.$.carousel.imageCount - this.$.carousel.thumbnailsCount)
+			{
+				this.$.carouselIndexInput.setValue(inEvent.toIndex);
+			}
 		}
 	},
 	

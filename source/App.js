@@ -43,7 +43,7 @@ enyo.kind(
 		{
 			name: 'carousel',
 			kind: 'MultiImageCarousel',
-			classes: 'carousel',
+			classes: 'carousel black-background',
 			fit: false,
 			ontap: 'showImage',
 			onTransitionStart: 'transitionStart',
@@ -52,10 +52,16 @@ enyo.kind(
 			thumbnailsCount: 5
 		},
 		{
-			name:'imagePanel',
-			kind:'Image',
-			classes:'image',
-			src:'',
+			name: 'imageContainer',
+			classes: 'grey-texture-background',
+			components:[
+			{
+				name:'imagePanel',
+				kind:'Image',
+				classes:'image',
+				src:''
+			}
+			]
 		}
 	],
 	
@@ -70,7 +76,9 @@ enyo.kind(
 				'http://nightly.enyojs.com/latest/sampler/assets/jupiter.jpg',
 				'http://nightly.enyojs.com/latest/sampler/assets/saturn.jpg',
 				'http://nightly.enyojs.com/latest/sampler/assets/uranus.jpg',
-				'http://nightly.enyojs.com/latest/sampler/assets/neptune.jpg'
+				'http://nightly.enyojs.com/latest/sampler/assets/neptune.jpg',
+				'http://i.space.com/images/i/000/005/980/i02/moon-watching-night-100916-02.jpg?1294154541',
+				'http://images1.wikia.nocookie.net/__cb20111213180223/stargate/images/b/bf/Stargate.JPG'
 		];
 
 		this.$.carousel.setImages(this.urls);
